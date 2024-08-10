@@ -47,10 +47,6 @@ const Vacancy = () => {
       });
   }, []);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
   if (error) {
     return <div>Error: {error}</div>;
   }
@@ -98,22 +94,26 @@ const Vacancy = () => {
         </form>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredVacancies.map((data) => {
-            return (
-              <CardVacancy
-                key={data.id}
-                id={data.id}
-                title={data.title}
-                company={data.company}
-                imageCompany={data.company_image_url}
-                jobTenure={data.job_tenure}
-                companyCity={data.company_city}
-                salaryMax={data.salary_max}
-                salaryMin={data.salary_min}
-                jobType={data.job_type}
-              />
-            );
-          })}
+          {loading ? (
+            <div>Loading..</div>
+          ) : (
+            filteredVacancies.map((data) => {
+              return (
+                <CardVacancy
+                  key={data.id}
+                  id={data.id}
+                  title={data.title}
+                  company={data.company}
+                  imageCompany={data.company_image_url}
+                  jobTenure={data.job_tenure}
+                  companyCity={data.company_city}
+                  salaryMax={data.salary_max}
+                  salaryMin={data.salary_min}
+                  jobType={data.job_type}
+                />
+              );
+            })
+          )}
         </div>
       </section>
     </div>

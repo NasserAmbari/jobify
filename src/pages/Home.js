@@ -18,9 +18,13 @@ const Home = () => {
   const imageHero = useRef(null);
 
   useEffect(() => {
-    readVacancy().then((res) => {
-      setDataVacancy(res.data);
-    });
+    readVacancy()
+      .then((res) => {
+        setDataVacancy(res.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
 
     gsap.fromTo(
       [firstBox.current, imageHero.current, secondBox.current],
@@ -101,22 +105,26 @@ const Home = () => {
       <section className="mb-60">
         <h2 className="text-5xl font-medium mb-12">Jobs Vacancy</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {dataVacancy.map((data) => {
-            return (
-              <CardVacancy
-                key={data.id}
-                id={data.id}
-                title={data.title}
-                company={data.company}
-                imageCompany={data.company_image_url}
-                jobTenure={data.job_tenure}
-                companyCity={data.company_city}
-                salaryMax={data.salary_max}
-                salaryMin={data.salary_min}
-                jobType={data.job_type}
-              />
-            );
-          })}
+          {!dataVacancy ? (
+            <div>Loading...</div>
+          ) : (
+            dataVacancy.map((data) => {
+              return (
+                <CardVacancy
+                  key={data.id}
+                  id={data.id}
+                  title={data.title}
+                  company={data.company}
+                  imageCompany={data.company_image_url}
+                  jobTenure={data.job_tenure}
+                  companyCity={data.company_city}
+                  salaryMax={data.salary_max}
+                  salaryMin={data.salary_min}
+                  jobType={data.job_type}
+                />
+              );
+            })
+          )}
         </div>
       </section>
 

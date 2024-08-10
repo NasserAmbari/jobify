@@ -6,6 +6,7 @@ import { rupiahFormat, timeAgo, JobStatus } from "../utils";
 import { deleteVacancy } from "../api/vacancy";
 import { useNavigate } from "react-router-dom";
 import { Input } from "../components";
+import { ToastContainer } from "react-toastify";
 
 const Table = () => {
   const navigate = useNavigate();
@@ -64,6 +65,7 @@ const Table = () => {
 
   return (
     <>
+      <ToastContainer />
       <form className="grid grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-2 md:gap-y-2 mb-12">
         <Input
           type="text"

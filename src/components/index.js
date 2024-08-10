@@ -1,9 +1,7 @@
 import Card from "./Card";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
-import SplitText from "./SplitText";
 import CardVacancy from "./CardVacancy";
-import Quote from "./Quote";
 import Marquee from "./Marquee";
 import Layout from "./Layout";
 import Input from "./Input";
@@ -17,7 +15,6 @@ export {
   Card,
   Footer,
   Navbar,
-  SplitText,
   CardVacancy,
   Marquee,
   Layout,
