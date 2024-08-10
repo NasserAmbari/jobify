@@ -21,10 +21,8 @@ const Table = () => {
 
   const handleDelete = (id) => {
     deleteVacancy(id).then((response) => {
-      console.log(response);
       setIsFetch(true);
     });
-    console.log(isFetch);
   };
 
   const handleUpdate = (id) => {
@@ -55,11 +53,12 @@ const Table = () => {
       .then((res) => {
         setFiltered(res.data);
         setData(res.data);
+        setIsFetch(false);
       })
       .catch((error) => {
         console.error(error);
       });
-  }, []);
+  }, [isFetch]);
 
   if (!data) return <div>Kosong</div>;
 
