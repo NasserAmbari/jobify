@@ -24,9 +24,13 @@ const VacancyDetail = () => {
         setLoading(false);
       });
 
-    readVacancy().then((res) => {
-      setDataVacancy(res.data);
-    });
+    readVacancy()
+      .then((res) => {
+        setDataVacancy(res.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, [id]);
 
   if (error) {
