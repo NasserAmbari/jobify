@@ -23,7 +23,9 @@ const VacancyDetail = () => {
         setError(err.message);
         setLoading(false);
       });
+  }, [id]);
 
+  useEffect(() => {
     readVacancy()
       .then((res) => {
         setDataVacancy(res.data);
@@ -31,7 +33,7 @@ const VacancyDetail = () => {
       .catch((error) => {
         console.error(error);
       });
-  }, [id]);
+  }, []);
 
   if (error) {
     return <div>Error: {error}</div>;

@@ -52,7 +52,7 @@ const Profile = () => {
           <div className="aspect-square w-40 rounded-full overflow-hidden mb-4">
             <img src={dataProfile.image_url} alt="" />
           </div>
-          <h2 className="text-black">{dataProfile.name}</h2>
+          <h2 className="text-black text-center">{dataProfile.name}</h2>
         </div>
 
         <div className="md:pl-10 lg:pl-20 md:border-l-2 w-3/4 ">

@@ -8,6 +8,7 @@ import { GlobalContext } from "../context/global";
 const Sidebar = () => {
   const { toggleSidebar, isSidebarOpen } = useContext(DashboardContext);
   const { handleLogout } = useContext(GlobalContext);
+
   return (
     <aside
       className={`fixed inset-y-0 left-0  top-0 z-30 w-80 bg-white shadow-lg lg:sticky lg:translate-x-0 transform max-h-screen
@@ -24,6 +25,7 @@ const Sidebar = () => {
           </div>
           <hr className="my-4" />
           <Link to="/dashboard" className="text-lg">
+            <FontAwesomeIcon icon="fa-xmark" />
             List Job
           </Link>
 
