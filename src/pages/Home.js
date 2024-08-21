@@ -22,14 +22,7 @@ import {
 } from "../assets/";
 import HeroImage from "../assets/hero.png";
 
-import {
-  Button,
-  Card,
-  CardVacancy,
-  Input,
-  Marquee,
-  SplitSentence,
-} from "../components";
+import { Button, Card, CardVacancy, Input, Marquee } from "../components";
 import CardTestimonial from "../components/CardTestimonial";
 
 gsap.registerPlugin(useGSAP);
@@ -80,6 +73,8 @@ const Home = () => {
   const secondBox = useRef(null);
   const imageHero = useRef(null);
   const buttonHero = useRef(null);
+  const title = useRef(null);
+  const subtitle = useRef(null);
 
   useEffect(() => {
     readVacancy()
@@ -93,12 +88,12 @@ const Home = () => {
     const timelineAnimation = gsap.timeline();
 
     timelineAnimation.fromTo(
-      [
-        firstBox.current,
-        imageHero.current,
-        secondBox.current,
-        buttonHero.current,
-      ],
+      [firstBox.current, imageHero.current, secondBox.current],
+      { y: "500", opacity: 0 },
+      { y: "0", opacity: 1, duration: 1, ease: "power2.out", stagger: 0.2 }
+    );
+    timelineAnimation.fromTo(
+      [title.current, subtitle.current, buttonHero.current],
       { y: "500", opacity: 0 },
       { y: "0", opacity: 1, duration: 1, ease: "power2.out", stagger: 0.2 }
     );
@@ -125,16 +120,22 @@ const Home = () => {
         id="hero"
       >
         <div className="basis-2/4  mt-10 md:mt-0">
-          <h1 className="text-4xl md:text-7xl font-medium mb-4">
-            <SplitSentence sentence="Find Your Best Job Here" delay={0.5} />
-          </h1>
-
-          <h2 className="text-2xl md:text-4xl  font-light mb-4">
-            <SplitSentence
-              sentence="We gonna help you to find your best job here"
-              delay={1.25}
-            />
-          </h2>
+          <div className="overflow-y-hidden">
+            <h1
+              ref={title}
+              className="text-4xl md:text-7xl font-medium mb-4 overflow-y-hidden"
+            >
+              Find Your Best Job Here
+            </h1>
+          </div>
+          <div className="overflow-y-hidden">
+            <h2
+              ref={subtitle}
+              className="text-2xl md:text-4xl font-light mb-4 "
+            >
+              We gonna help you to find your best job here
+            </h2>
+          </div>
 
           <Link to="/find-jobs">
             <div className="overflow-y-hidden">
