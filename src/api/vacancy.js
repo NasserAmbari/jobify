@@ -1,10 +1,9 @@
 import axios from "axios";
-import { API_VACANCY_ROUTE } from "../constants/apiRoute";
 import Cookies from "js-cookie";
 
 const readVacancy = async () => {
   try {
-    const response = await axios.get(API_VACANCY_ROUTE.GET_VACANCY);
+    const response = await axios.get(process.env.REACT_APP_API_BASE_URL);
     return response.data;
   } catch (error) {
     console.error(error);
@@ -14,7 +13,7 @@ const readVacancy = async () => {
 const readOneVacancy = async (id) => {
   try {
     const response = await axios.get(
-      `${API_VACANCY_ROUTE.GET_ONE_VACANCY + id}`
+      `${process.env.REACT_APP_API_BASE_URL}/${id}`
     );
     return response.data;
   } catch (error) {
@@ -24,9 +23,8 @@ const readOneVacancy = async (id) => {
 
 const createVacancy = async (field) => {
   try {
-    console.log(field);
     const response = await axios.post(
-      `${API_VACANCY_ROUTE.CREATE_VACANCY}`,
+      `${process.env.REACT_APP_API_BASE_URL}`,
       field,
       { headers: { Authorization: "Bearer " + Cookies.get("token") } }
     );
@@ -39,7 +37,7 @@ const createVacancy = async (field) => {
 const deleteVacancy = async (id) => {
   try {
     const response = await axios.delete(
-      `${"https://dev-example.sanbercloud.com/api/job-vacancy/" + id}`,
+      `${process.env.REACT_APP_API_BASE_URL}/${id}`,
       {
         headers: {
           Authorization: "Bearer" + Cookies.get("token"),
@@ -54,9 +52,8 @@ const deleteVacancy = async (id) => {
 
 const updateVacancy = async (id, field) => {
   try {
-    console.log({ id, field });
     const response = await axios.put(
-      `${API_VACANCY_ROUTE.UPDATE_VACANCY + id}`,
+      `${process.env.REACT_APP_API_BASE_URL}/${id}`,
       field,
       { headers: { Authorization: "Bearer " + Cookies.get("token") } }
     );

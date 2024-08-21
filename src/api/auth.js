@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 const login = async ({ email, password }) => {
   try {
     const response = await axios.post(
-      "https://dev-example.sanbercloud.com/api/login",
+      process.env.REACT_APP_API_BASE_URL_LOGIN,
       {
         email: email,
         password: password,
@@ -20,7 +20,7 @@ const login = async ({ email, password }) => {
 const register = async (fieldRegister) => {
   try {
     const response = await axios.post(
-      "https://dev-example.sanbercloud.com/api/register",
+      process.env.REACT_APP_API_BASE_URL_REGISTER,
       fieldRegister
     );
     return response.data;
@@ -33,7 +33,7 @@ const register = async (fieldRegister) => {
 const changePassword = async (password) => {
   try {
     const response = await axios.post(
-      "https://dev-example.sanbercloud.com/api/change-password",
+      process.env.REACT_APP_API_BASE_URL_CHANGE_PASSWORD,
       password,
       {
         headers: {

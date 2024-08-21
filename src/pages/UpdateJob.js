@@ -29,12 +29,10 @@ const UpdateJob = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log({ name, value });
     setField((prev) => ({
       ...prev,
       [name]: value,
     }));
-    console.log(field);
   };
 
   useEffect(() => {

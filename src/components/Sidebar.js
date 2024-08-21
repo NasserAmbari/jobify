@@ -27,7 +27,6 @@ const Sidebar = () => {
   const { toggleSidebar, isSidebarOpen } = useContext(DashboardContext);
   const { handleLogout } = useContext(GlobalContext);
   let location = useLocation();
-  console.log(location);
 
   return (
     <aside
