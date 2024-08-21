@@ -29,6 +29,9 @@ import {
   faBars,
   faTrash,
   faRotate,
+  faList,
+  faPlus,
+  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import Register from "./pages/Register";
 import UpdateJob from "./pages/UpdateJob";
@@ -48,12 +51,15 @@ library.add(
   faXmark,
   faBars,
   faTrash,
-  faRotate
+  faRotate,
+  faList,
+  faPlus,
+  faUser
 );
 
 function App() {
   return (
-    <>
+    <main>
       <Router>
         <GlobalProvider>
           <div>
@@ -130,7 +136,7 @@ function App() {
           </div>
         </GlobalProvider>
       </Router>
-    </>
+    </main>
   );
 }
 

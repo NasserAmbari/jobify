@@ -45,7 +45,9 @@ const CardVacancy = ({
       </div>
 
       <Link to={`/job-vacancy/${id}`}>
-        <Button text="Learn More" />
+        <Button className="p-12" small={true}>
+          Learn More
+        </Button>
       </Link>
     </div>
   );

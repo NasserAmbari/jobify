@@ -1,12 +1,17 @@
-const Button = ({ text, click }) => {
+import { forwardRef } from "react";
+
+const Button = forwardRef(({ children, click, small = false }, ref) => {
   return (
     <button
+      ref={ref}
       onClick={click}
-      className="w-full text-center bg-[#216A80] text-white py-2 md:py-4 rounded-xl"
+      className={` p-2 rounded-xl text-white bg-[#216A80] shadow-xl ${
+        small === true ? "text-sm px-4" : "text-lg px-8"
+      }`}
     >
-      {text}
+      {children}
     </button>
   );
-};
+});
 
 export default Button;

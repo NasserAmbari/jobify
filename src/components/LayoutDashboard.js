@@ -8,7 +8,6 @@ const LayoutDashboard = ({ children }) => {
   const { toggleSidebar } = useContext(DashboardContext);
   const dataJson = Cookies.get("profile");
   const dataProfile = JSON.parse(dataJson);
-  console.log(dataProfile);
 
   return (
     <div className="flex">
@@ -22,8 +21,8 @@ const LayoutDashboard = ({ children }) => {
               className="aspect-square w-8 rounded-full"
               alt={dataProfile.name}
             />
-            <div className="flex flex-col content-center">
-              <p className="margin-auto">Hallo, {dataProfile.name}</p>
+            <div className="flex items-center">
+              <p>Hallo, {dataProfile.name}</p>
             </div>
           </div>
           <div className="block lg:hidden" onClick={toggleSidebar}>

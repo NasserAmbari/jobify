@@ -59,7 +59,7 @@ const Table = () => {
       .catch((error) => {
         console.error(error);
       });
-  }, [isFetch]);
+  }, [isFetch, setIsFetch]);
 
   if (!data) return <div>Kosong</div>;
 

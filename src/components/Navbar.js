@@ -4,8 +4,9 @@ import { useGSAP } from "@gsap/react";
 import Cookies from "js-cookie";
 import gsap from "gsap";
 import { GlobalContext } from "../context/global";
-
 import MainLogo from "../assets/logo.svg";
+
+gsap.registerPlugin(useGSAP);
 
 const navigation = [
   {
@@ -36,13 +37,23 @@ const navigation = [
 const Navbar = () => {
   const { handleLogout } = useContext(GlobalContext);
 
-  gsap.registerPlugin(useGSAP);
-
   const [isMenuOpen, setMenuOpen] = useState(false);
   const listNav = useRef([]);
   const logo = useRef(null);
 
   useEffect(() => {
+    gsap.fromTo(
+      logo.current,
+      {
+        y: "40",
+      },
+      {
+        y: "0",
+        ease: "power2.in",
+        duration: 1,
+      }
+    );
+
     gsap.fromTo(
       listNav.current,
       {
@@ -54,18 +65,6 @@ const Navbar = () => {
         duration: 1,
         delay: 0.5,
         stagger: 0.2,
-      }
-    );
-
-    gsap.fromTo(
-      logo.current,
-      {
-        y: "40",
-      },
-      {
-        y: "0",
-        ease: "power2.in",
-        duration: 1,
       }
     );
   }, []);
@@ -124,7 +123,7 @@ const Navbar = () => {
                         listNav.current[index] = elm;
                       }}
                       to={item.name === "Logout" ? "" : item.path}
-                      className="md:p-0"
+                      className="md:p-0 inline-block"
                       onClick={
                         item.name === "Logout" ? handleLogout : undefined
                       }

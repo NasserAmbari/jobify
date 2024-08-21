@@ -1,13 +1,10 @@
-const Marquee = ({ children, speed = 20 }) => {
+const Marquee = ({ children, length }) => {
   return (
-    <div className="marquee-container overflow-hidden w-full">
-      <div
-        className="marquee-content flex whitespace-nowrap"
-        style={{ "--speed": `${speed}s` }}
-      >
-        {children}
-        {children}
-      </div>
+    <div
+      className="marquee fadeout-horizontal"
+      style={{ "--num-items": length }}
+    >
+      <div className="marquee-track">{children}</div>
     </div>
   );
 };

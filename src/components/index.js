@@ -10,6 +10,7 @@ import Button from "./Button";
 import Sidebar from "./Sidebar";
 import LayoutDashboard from "./LayoutDashboard";
 import Table from "./Table";
+import SplitSentence from "./SplitSentence";
 
 export {
   Card,
@@ -24,4 +25,5 @@ export {
   Sidebar,
   LayoutDashboard,
   Table,
+  SplitSentence,
 };

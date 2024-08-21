@@ -1,13 +1,33 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MainLogo from "../assets/logo.svg";
 import { DashboardContext } from "../context/dashboard";
 import { GlobalContext } from "../context/global";
 
+const navigation = [
+  {
+    link: "/dashboard",
+    name: "Job List",
+    icon: "fa-list",
+  },
+  {
+    link: "/dashboard/create-a-job",
+    name: "Create a Job",
+    icon: "fa-plus",
+  },
+  {
+    link: "/dashboard/profile",
+    name: "Profile",
+    icon: "fa-user",
+  },
+];
+
 const Sidebar = () => {
   const { toggleSidebar, isSidebarOpen } = useContext(DashboardContext);
   const { handleLogout } = useContext(GlobalContext);
+  let location = useLocation();
+  console.log(location);
 
   return (
     <aside
@@ -24,18 +44,29 @@ const Sidebar = () => {
             </div>
           </div>
           <hr className="my-4" />
-          <Link to="/dashboard" className="text-lg">
-            <FontAwesomeIcon icon="fa-xmark" />
-            List Job
-          </Link>
 
-          <Link to="/dashboard/create-a-job" className="text-lg">
-            Create Job
-          </Link>
-
-          <Link to="/dashboard/profile" className="text-lg">
-            Profile
-          </Link>
+          {navigation.map((data, idx) => {
+            return (
+              <Link to={data.link} className="text-lg" key={idx}>
+                <div
+                  className={`flex gap-2 content-cente p-4 rounded-lg  hover:bg-[#216A80] hover:text-white
+                  ${
+                    location.pathname === data.link
+                      ? "bg-[#216A80] text-white"
+                      : location
+                  }`}
+                >
+                  <div className="flex items-center">
+                    <FontAwesomeIcon
+                      icon={data.icon}
+                      className="content-center"
+                    />
+                  </div>
+                  <p>{data.name}</p>
+                </div>
+              </Link>
+            );
+          })}
         </div>
 
         <div>

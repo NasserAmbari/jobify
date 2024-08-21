@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { readOneVacancy, updateVacancy } from "../api/vacancy";
 import { useParams, useNavigate } from "react-router-dom";
-import { Input } from "../components";
 
 const UpdateJob = () => {
   const navigate = useNavigate("/dashboard");
@@ -45,7 +44,7 @@ const UpdateJob = () => {
         ...res,
       }));
     });
-  }, []);
+  }, [id]);
 
   if (!field) return <div>Loading ... </div>;
 
